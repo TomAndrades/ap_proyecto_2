@@ -36,39 +36,41 @@
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon bg-dark"></span>
+              <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav gap-2">
                 <li class="nav-item text-center justify-content-end">
                   <a
-                    class="nav-link active nav-button rounded text-bg-dark"
+                    class="nav-link active nav-button rounded text-bg-dark p-3"
                     aria-current="page"
                     href="#"
                     >Home</a
                   >
                 </li>
-                <li class="nav-item text-center">
+                <li class="nav-item text-center d-flex flex-nonwrap">
                   <a
-                    class="nav-link nav-button rounded"
+                    class="nav-link nav-button rounded p-3"
                     href="./upcoming_events.html"
                     >Upcoming Events</a
                   >
                 </li>
                 <li class="nav-item text-center">
                   <a
-                    class="nav-link nav-button rounded"
+                    class="nav-link nav-button rounded p-3"
                     href="./past_events.html"
                     >Past Events</a
                   >
                 </li>
                 <li class="nav-item text-center">
-                  <a class="nav-link nav-button rounded" href="./contact.html"
+                  <a
+                    class="nav-link nav-button rounded p-3"
+                    href="./contact.html"
                     >Contact</a
                   >
                 </li>
                 <li class="nav-item text-center">
-                  <a class="nav-link nav-button rounded" href="./stats.html"
+                  <a class="nav-link nav-button rounded p-3" href="./stats.html"
                     >Stats</a
                   >
                 </li>
@@ -77,6 +79,44 @@
           </div>
         </div>
       </nav>
+
+      <div
+        id="carouselExampleDark"
+        class="carousel carousel-dark slide bg-dark text-bg-dark text-center h-75"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <h1 class="fs-2">Home</h1>
+          </div>
+          <div class="carousel-item" data-bs-interval="10000">
+            <h1 class="fs-2">Upcoming events</h1>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <h1 class="fs-2">Past events</h1>
+          </div>
+          <div class="carousel-item">
+            <h1 class="fs-2">Contact</h1>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </header>
 
     <script
