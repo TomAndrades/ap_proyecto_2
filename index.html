@@ -4,7 +4,158 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/Icon.png"
+      type="image/x-icon"
+    />
     <title>Amazing Events</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/style/style.css" />
   </head>
-  <body></body>
+  <body>
+    <header>
+      <!-- NAV -->
+      <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container">
+          <a class="navbar-brand p-3" href="#"
+            ><img class="logo" src="./assets/img/Logo Amazing Events.png"
+          /></a>
+          <div class="justify-content-end">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav gap-2">
+                <li class="nav-item text-center justify-content-end">
+                  <a
+                    class="nav-link active nav-button rounded text-bg-dark p-3"
+                    aria-current="page"
+                    href="#"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item text-center d-flex flex-nonwrap">
+                  <a
+                    class="nav-link nav-button rounded p-3"
+                    href="./upcoming_events.html"
+                    >Upcoming Events</a
+                  >
+                </li>
+                <li class="nav-item text-center">
+                  <a
+                    class="nav-link nav-button rounded p-3"
+                    href="./past_events.html"
+                    >Past Events</a
+                  >
+                </li>
+                <li class="nav-item text-center">
+                  <a
+                    class="nav-link nav-button rounded p-3"
+                    href="./contact.html"
+                    >Contact</a
+                  >
+                </li>
+                <li class="nav-item text-center">
+                  <a class="nav-link nav-button rounded p-3" href="./stats.html"
+                    >Stats</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div
+        id="carouselExampleDark"
+        class="carousel carousel-dark slide bg-dark text-bg-dark text-center h-75"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <h1 class="fs-2">Home</h1>
+          </div>
+          <div class="carousel-item" data-bs-interval="10000">
+            <h1 class="fs-2">Upcoming events</h1>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <h1 class="fs-2">Past events</h1>
+          </div>
+          <div class="carousel-item">
+            <h1 class="fs-2">Contact</h1>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <form class="d-flex" role="search">
+        <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" id="category1" />
+          <label class="form-check-label" for="category1">category1</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" id="category2" />
+          <label class="form-check-label" for="category2 ">category2</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" id="category3" />
+          <label class="form-check-label" for="category3">category3</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" id="category4" />
+          <label class="form-check-label" for="category4">category4</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" id="category5" />
+          <label class="form-check-label" for="category5">category5</label>
+        </div>
+
+        <input
+          class="form-control me-2 w-25 justify-self-end"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
