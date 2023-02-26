@@ -25,28 +25,15 @@
   <body>
     <header>
       <!-- NAV -->
-      <nav class="navbar navbar-expand-lg bg-dark">
+      <nav class="navbar navbar-expand-sm bg-dark">
         <div class="container">
-          <a class="navbar-brand m-0" href="#"
+          <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto justify-content-center justify-content-sm-start" href="#"
             ><img
-              class="w-25"
+              class="w-50"
               src="./assets/img/Logo_Amazing_Events.png"
               alt="Brand logo"
           /></a>
-          <div class="justify-content-end">
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav gap-2">
+              <ul class="nav nav-pills gap-2 justify-content-center">
                 <li class="nav-item text-center">
                   <a
                     class="nav-link active btn-fucsia rounded text-bg-dark"
@@ -87,7 +74,7 @@
 
       <div
         id="carouselExampleDark"
-        class="carousel carousel-dark slide bg-dark text-bg-dark text-center h-75"
+        class="carousel carousel-dark slide bg-dark text-bg-dark text-center vh-75"
       >
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000">
@@ -108,96 +95,86 @@
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="prev"
+          href="./stats.html"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <i class="bi bi-chevron-compact-left fs-2"></i>
         </button>
         <button
           class="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="next"
+          href="./upcoming_events.html"
         >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <i class="bi bi-chevron-compact-right fs-2"></i>
         </button>
       </div>
     </header>
 
-    <main class="container-fluid bg-fucsia bg-gradient">
-      <div class="row pt-2">
-        <div class="col">
-          <div class="row p-2">
-            <div class="col">
+    <main class="container-fluid bg-fucsia bg-gradient min-vh-100">
+      <div class="d-flex flex-row flex-wrap px-2 pt-2 align-items-center gap-2">
+        
+          <label class="form-check-label" for="flexCheck1">
               <input
                 class="form-check-input"
                 type="checkbox"
                 value=""
                 id="flexCheck1"
               />
-              <label class="form-check-label" for="flexCheck1">
-                Checkbox
+                Checkbox1
               </label>
-            </div>
-            <div class="col">
+
+              <label class="form-check-label" for="flexCheck2">
               <input
                 class="form-check-input"
                 type="checkbox"
                 value=""
                 id="flexCheck2"
               />
-              <label class="form-check-label" for="flexCheck2">
-                Checkbox
+                Checkbox2
               </label>
-            </div>
-            <div class="col">
+              
+              <label class="form-check-label" for="flexCheck3">
               <input
                 class="form-check-input"
                 type="checkbox"
                 value=""
                 id="flexCheck3"
               />
-              <label class="form-check-label" for="flexCheck3">
-                Checkbox
+                Checkbox3
               </label>
-            </div>
-            <div class="col">
+
+              <label class="form-check-label" for="flexCheck4">
               <input
                 class="form-check-input"
                 type="checkbox"
                 value=""
                 id="flexCheck4"
               />
-              <label class="form-check-label" for="flexCheck4">
-                Checkbox
+                Checkbox4
               </label>
-            </div>
-            <div class="col">
+
+              <label class="form-check-label" for="flexCheck5">
               <input
                 class="form-check-input"
                 type="checkbox"
                 value=""
                 id="flexCheck5"
               />
-              <label class="form-check-label" for="flexCheck5">
-                Checkbox
+                Checkbox5
               </label>
-            </div>
-          </div>
-        </div>
 
-        <div class="col">
-          <form class="form d-flex justify-content-end">
-            <input
-              class="form-control me-2 w-75"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-fucsia btn-outline-dark py-2" type="submit">
-              <img src="./assets/img/search.svg" alt="Search icon" />
-            </button>
-          </form>
+              <form class="form d-flex flex-nowrap ms-auto mw-100">
+                <input
+                  class="form-control"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button class="btn btn-fucsia btn-outline-dark py-2" type="submit">
+                  <img src="./assets/img/search.svg" alt="Search icon" />
+                </button>
+              </form>
         </div>
       </div>
       <div
@@ -333,21 +310,21 @@
         </div>
       </div>
     </main>
-    <footer class="container-fluid d-flex bg-dark py-1">
+    <footer class="container-fluid d-flex bg-dark py-2">
       <div class="row w-100">
-        <div class="col col-5 align-middle">
-          <button class="rounded-circle border border-0 btn-fucsia">
+        <div class="col col-6 align-middle">
+          <button class="rounded-circle border border-0 btn-fucsia square" href="#">
             <i class="bi bi-instagram"></i>
           </button>
-          <button class="rounded-circle border border-0 btn-fucsia">
+          <button class="rounded-circle border border-0 btn-fucsia square" href="#">
             <i class="bi bi-facebook"></i>
           </button>
-          <button class="rounded-circle border border-0 btn-fucsia">
+          <button class="rounded-circle border border-0 btn-fucsia square" href="#">
             <i class="bi bi-whatsapp"></i>
           </button>
         </div>
-        <div class="col col-7 text-end">
-          <h5 class="text-bg-dark m-0">Cohort FE13-TN</h5>
+        <div class="col col-6 text-end align-middle">
+          <h6 class="text-bg-dark mt-1">Cohort FE13-TN</h6>
         </div>
       </div>
     </footer>
