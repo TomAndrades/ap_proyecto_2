@@ -34,3 +34,8 @@
     width: 32px;
     height: 32px;
 }
+
+.detailImg {
+    width: 20rem !important;
+    height: 20rem !important;
+}
