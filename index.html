@@ -17,60 +17,52 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
   </head>
   <body>
     <header>
       <!-- NAV -->
-      <nav class="navbar navbar-expand-lg bg-dark">
+      <nav class="navbar navbar-expand-sm bg-dark">
         <div class="container">
-          <a class="navbar-brand p-3" href="#"
-            ><img class="logo" src="./assets/img/Logo Amazing Events.png"
+          <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto justify-content-center justify-content-sm-start" href="#"
+            ><img
+              class="w-50"
+              src="./assets/img/Logo_Amazing_Events.png"
+              alt="Brand logo"
           /></a>
-          <div class="justify-content-end">
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav gap-2">
-                <li class="nav-item text-center justify-content-end">
+              <ul class="nav nav-pills gap-2 justify-content-center">
+                <li class="nav-item text-center">
                   <a
-                    class="nav-link active nav-button rounded text-bg-dark p-3"
+                    class="nav-link active btn-fucsia rounded text-bg-dark"
                     aria-current="page"
                     href="#"
                     >Home</a
                   >
                 </li>
-                <li class="nav-item text-center d-flex flex-nonwrap">
+                <li class="nav-item text-center">
                   <a
-                    class="nav-link nav-button rounded p-3"
+                    class="nav-link btn-fucsia rounded"
                     href="./upcoming_events.html"
                     >Upcoming Events</a
                   >
                 </li>
                 <li class="nav-item text-center">
                   <a
-                    class="nav-link nav-button rounded p-3"
+                    class="nav-link btn-fucsia rounded"
                     href="./past_events.html"
                     >Past Events</a
                   >
                 </li>
                 <li class="nav-item text-center">
-                  <a
-                    class="nav-link nav-button rounded p-3"
-                    href="./contact.html"
+                  <a class="nav-link btn-fucsia rounded" href="./contact.html"
                     >Contact</a
                   >
                 </li>
                 <li class="nav-item text-center">
-                  <a class="nav-link nav-button rounded p-3" href="./stats.html"
+                  <a class="nav-link btn-fucsia rounded" href="./stats.html"
                     >Stats</a
                   >
                 </li>
@@ -82,7 +74,7 @@
 
       <div
         id="carouselExampleDark"
-        class="carousel carousel-dark slide bg-dark text-bg-dark text-center h-75"
+        class="carousel carousel-dark slide bg-dark text-bg-dark text-center vh-75"
       >
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000">
@@ -91,10 +83,10 @@
           <div class="carousel-item" data-bs-interval="10000">
             <h1 class="fs-2">Upcoming events</h1>
           </div>
-          <div class="carousel-item" data-bs-interval="2000">
+          <div class="carousel-item" data-bs-interval="10000">
             <h1 class="fs-2">Past events</h1>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item" data-bs-interval="10000">
             <h1 class="fs-2">Contact</h1>
           </div>
         </div>
@@ -103,55 +95,239 @@
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="prev"
+          href="./stats.html"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <i class="bi bi-chevron-compact-left fs-2"></i>
         </button>
         <button
           class="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="next"
+          href="./upcoming_events.html"
         >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <i class="bi bi-chevron-compact-right fs-2"></i>
         </button>
       </div>
     </header>
 
-    <main>
-      <form class="d-flex" role="search">
-        <div class="form-check form-check-inline">
-          <input type="checkbox" class="form-check-input" id="category1" />
-          <label class="form-check-label" for="category1">category1</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input type="checkbox" class="form-check-input" id="category2" />
-          <label class="form-check-label" for="category2 ">category2</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input type="checkbox" class="form-check-input" id="category3" />
-          <label class="form-check-label" for="category3">category3</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input type="checkbox" class="form-check-input" id="category4" />
-          <label class="form-check-label" for="category4">category4</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input type="checkbox" class="form-check-input" id="category5" />
-          <label class="form-check-label" for="category5">category5</label>
-        </div>
+    <main class="container-fluid bg-fucsia bg-gradient min-vh-100">
+      <div class="d-flex flex-row flex-wrap px-2 pt-2 align-items-center gap-2">
+        
+          <label class="form-check-label" for="flexCheck1">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheck1"
+              />
+                Checkbox1
+              </label>
 
-        <input
-          class="form-control me-2 w-25 justify-self-end"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+              <label class="form-check-label" for="flexCheck2">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheck2"
+              />
+                Checkbox2
+              </label>
+              
+              <label class="form-check-label" for="flexCheck3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheck3"
+              />
+                Checkbox3
+              </label>
+
+              <label class="form-check-label" for="flexCheck4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheck4"
+              />
+                Checkbox4
+              </label>
+
+              <label class="form-check-label" for="flexCheck5">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheck5"
+              />
+                Checkbox5
+              </label>
+
+              <form class="form d-flex flex-nowrap ms-auto mw-100">
+                <input
+                  class="form-control"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button class="btn btn-fucsia btn-outline-dark py-2" type="submit">
+                  <img src="./assets/img/search.svg" alt="Search icon" />
+                </button>
+              </form>
+        </div>
+      </div>
+      <div
+        class="row row-cols-sm-2 row-cols-md-3 row-cols-1 row-cols-lg-4 row-cols-xl-5 p-2 mt-1 g-2"
+      >
+        <div class="col">
+          <div class="card text-bg-dark">
+            <img class="card-img-top" src="./assets/img/Cinema.jpg" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+            <div
+              class="card-footer d-flex justify-content-between align-items-center"
+            >
+              <p class="pt-3">Precio: 10000$</p>
+              <a href="" class="btn btn-fucsia">ver mas...</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-bg-dark">
+            <img
+              src="./assets/img/Costume_Party.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+            <div
+              class="card-footer d-flex justify-content-between align-items-center"
+            >
+              <p class="pt-3">Precio: 10000$</p>
+              <a href="" class="btn btn-fucsia">ver mas...</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-bg-dark">
+            <img
+              src="./assets/img/Food_Fair.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+            <div
+              class="card-footer d-flex justify-content-between align-items-center"
+            >
+              <p class="pt-3">Precio: 10000$</p>
+              <a href="" class="btn btn-fucsia">ver mas...</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-bg-dark">
+            <img
+              src="./assets/img/Marathon.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+            <div
+              class="card-footer d-flex justify-content-between align-items-center"
+            >
+              <p class="pt-3">Precio: 10000$</p>
+              <a href="" class="btn btn-fucsia">ver mas...</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-bg-dark">
+            <img
+              src="./assets/img/Museum_Tour.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+            <div
+              class="card-footer d-flex justify-content-between align-items-center"
+            >
+              <p class="pt-3">Precio: 10000$</p>
+              <a href="" class="btn btn-fucsia">ver mas...</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-bg-dark">
+            <img
+              src="./assets/img/Music_Concert.jpg"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+            <div
+              class="card-footer d-flex justify-content-between align-items-center"
+            >
+              <p class="pt-3">Precio: 10000$</p>
+              <a href="./details.html" class="btn btn-fucsia">ver mas...</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-
+    <footer class="container-fluid d-flex bg-dark py-2">
+      <div class="row w-100">
+        <div class="col col-6 align-middle">
+          <button class="rounded-circle border border-0 btn-fucsia square" href="#">
+            <i class="bi bi-instagram"></i>
+          </button>
+          <button class="rounded-circle border border-0 btn-fucsia square" href="#">
+            <i class="bi bi-facebook"></i>
+          </button>
+          <button class="rounded-circle border border-0 btn-fucsia square" href="#">
+            <i class="bi bi-whatsapp"></i>
+          </button>
+        </div>
+        <div class="col col-6 text-end align-middle">
+          <h6 class="text-bg-dark mt-1">Cohort FE13-TN</h6>
+        </div>
+      </div>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
