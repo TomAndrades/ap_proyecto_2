@@ -27,48 +27,46 @@
       <!-- NAV -->
       <nav class="navbar navbar-expand-sm bg-dark">
         <div class="container">
-          <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto justify-content-center justify-content-sm-start" href="#"
-            ><img
+          <a
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto justify-content-center justify-content-sm-start"
+            href="#"
+          >
+            <img
               class="w-50"
               src="./assets/img/Logo_Amazing_Events.png"
               alt="Brand logo"
-          /></a>
-              <ul class="nav nav-pills gap-2 justify-content-center">
-                <li class="nav-item text-center">
-                  <a
-                    class="nav-link btn-fucsia rounded text-bg-dark"
-                    aria-current="page"
-                    href="./index.html"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item text-center">
-                  <a
-                    class="nav-link btn-fucsia rounded"
-                    href="./upcoming_events.html"
-                    >Upcoming Events</a
-                  >
-                </li>
-                <li class="nav-item text-center">
-                  <a
-                    class="nav-link btn-fucsia rounded"
-                    href="./past_events.html"
-                    >Past Events</a
-                  >
-                </li>
-                <li class="nav-item text-center">
-                  <a class="nav-link btn-fucsia rounded" href="#"
-                    >Contact</a
-                  >
-                </li>
-                <li class="nav-item text-center">
-                  <a class="nav-link btn-fucsia rounded" href="./stats.html"
-                    >Stats</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
+            />
+          </a>
+          <ul class="nav nav-pills gap-2 justify-content-center">
+            <li class="nav-item text-center">
+              <a
+                class="nav-link btn-fucsia rounded text-bg-dark"
+                aria-current="page"
+                href="./index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item text-center">
+              <a
+                class="nav-link btn-fucsia rounded"
+                href="./upcoming_events.html"
+                >Upcoming Events</a
+              >
+            </li>
+            <li class="nav-item text-center">
+              <a class="nav-link btn-fucsia rounded" href="./past_events.html"
+                >Past Events</a
+              >
+            </li>
+            <li class="nav-item text-center">
+              <a class="nav-link btn-fucsia rounded" href="#">Contact</a>
+            </li>
+            <li class="nav-item text-center">
+              <a class="nav-link btn-fucsia rounded" href="./stats.html"
+                >Stats</a
+              >
+            </li>
+          </ul>
         </div>
       </nav>
 
@@ -76,10 +74,10 @@
         class="carousel carousel-dark slide bg-fucsia text-bg-dark text-center vh-75"
       >
         <div class="carousel-inner">
-          <div class="carousel-item " data-bs-interval="10000">
+          <div class="carousel-item" data-bs-interval="10000">
             <h1 class="fs-2">Home</h1>
           </div>
-          <div class="carousel-item " data-bs-interval="10000">
+          <div class="carousel-item" data-bs-interval="10000">
             <h1 class="fs-2">Upcoming events</h1>
           </div>
           <div class="carousel-item" data-bs-interval="10000">
@@ -92,54 +90,62 @@
             <h1 class="fs-2">Stats</h1>
           </div>
         </div>
-        <a
-        class="carousel-control-prev"
-        href="./past_events.html"
-      >
-        <i class="bi bi-chevron-compact-left fs-2"></i>
-    </a>
-    <a
-    class="carousel-control-next"
-    href="./stats.html"
-  >
-    <i class="bi bi-chevron-compact-right fs-2"></i>
-</a>
+        <a class="carousel-control-prev" href="./past_events.html">
+          <i class="bi bi-chevron-compact-left fs-2"></i>
+        </a>
+        <a class="carousel-control-next" href="./stats.html">
+          <i class="bi bi-chevron-compact-right fs-2"></i>
+        </a>
       </div>
     </header>
 
-    <main class="container-fluid bg-fucsia bg-gradient min-vh-100 d-flex justify-content-center">
+    <main
+      class="container-fluid bg-fucsia bg-gradient d-flex justify-content-center min-vh-100"
+    >
       <form class="w-75">
         <div class="mb-3">
           <label for="nameInput" class="form-label">Name:</label>
-          <input type="text" class="form-control" id="nameInput">
+          <input type="text" class="form-control" id="nameInput" />
         </div>
         <div class="mb-3">
           <label for="emailInput" class="form-label">Email:</label>
-          <input type="email" class="form-control" id="emailInput">
+          <input type="email" class="form-control" id="emailInput" />
         </div>
         <div class="mb-3">
           <label for="textInput" class="form-label">Message:</label>
           <textarea class="form-control" id="textInput"></textarea>
         </div>
         <div class="mb-3 d-flex justify-content-end">
-        <button type="submit" class="btn btn-fucsia border border-2">Submit</button>
+          <button type="submit" class="btn btn-fucsia border border-2">
+            Submit
+          </button>
         </div>
       </form>
     </main>
-    <footer class="container-fluid d-flex bg-dark py-2">
-      <div class="row w-100">
-        <div class="col col-6 align-middle">
-          <button class="rounded-circle border border-0 btn-fucsia square" href="#">
+    <footer class="container-fluid bg-dark py-2">
+      <div class="row w-100 ms-1 gap-2">
+        <div
+          class="col col-1 text-center square rounded-circle border border-0 btn-fucsia justify-content-center d-flex pt-1"
+        >
+          <a class="text-reset" href="#">
             <i class="bi bi-instagram"></i>
-          </button>
-          <button class="rounded-circle border border-0 btn-fucsia square" href="#">
-            <i class="bi bi-facebook"></i>
-          </button>
-          <button class="rounded-circle border border-0 btn-fucsia square" href="#">
-            <i class="bi bi-whatsapp"></i>
-          </button>
+          </a>
         </div>
-        <div class="col col-6 text-end align-middle">
+        <div
+          class="col col-1 text-center square rounded-circle border border-0 btn-fucsia justify-content-center d-flex pt-1"
+        >
+          <a class="text-reset" href="#">
+            <i class="bi bi-facebook"></i>
+          </a>
+        </div>
+        <div
+          class="col col-1 text-center square rounded-circle border border-0 btn-fucsia justify-content-center d-flex pt-1"
+        >
+          <a class="text-reset" href="#">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+        </div>
+        <div class="col offset-md-4 text-end align-middle">
           <h6 class="text-bg-dark mt-1">Cohort FE13-TN</h6>
         </div>
       </div>

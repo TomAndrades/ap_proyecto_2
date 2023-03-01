@@ -1,7 +1,3 @@
-.logoBrand {
-    width: 50%;
-}
-
 .card {
     height: 100%;
     background-color: #b3b3b3;
@@ -31,11 +27,6 @@
 }
 
 .square {
-    width: 32px;
-    height: 32px;
-}
-
-.detailImg {
-    width: 20rem !important;
-    height: 20rem !important;
+    width: 2rem;
+    height: 2rem;
 }
