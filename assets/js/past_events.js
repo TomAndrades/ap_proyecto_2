@@ -6,9 +6,9 @@ for (let i=0; i<data.events.length;i++){
 }
 console.log(past_events)
 
-let template = ""
+let templateCards = ""
 for (const evento of past_events){
-    template += `<div class="col">
+    templateCards += `<div class="col">
     <div class="card text-bg-dark">
       <img
         src="${evento.image}"
@@ -30,6 +30,6 @@ for (const evento of past_events){
     </div>
   </div>`
 }
-console.log(template);
+
 eventsBody = document.getElementById("eventsBody");
-eventsBody.innerHTML = template;
+eventsBody.innerHTML = templateCards;

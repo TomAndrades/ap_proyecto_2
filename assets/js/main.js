@@ -1,14 +1,19 @@
 let events = []
 
+function htmlAdder(elementId, elementToInsert) {
+  let element = document.getElementById(elementId);
+  element.innerHTML = elementToInsert;
+}
+
 for (let i=0; i<data.events.length;i++){
     events.push(data.events[i]);
 }
 
-console.log(events)
+// console.log(events)
 
-let template = ""
+let templateCards = ""
 for (const evento of events){
-    template += `<div class="col">
+    templateCards += `<div class="col">
     <div class="card text-bg-dark">
       <img
         src="${evento.image}"
@@ -30,6 +35,48 @@ for (const evento of events){
     </div>
   </div>`;
 }
+htmlAdder("eventsBody", templateCards)
 
-eventsBody = document.getElementById("eventsBody");
-eventsBody.innerHTML = template;
+function getCategorys(eventos){
+  // Toma un array de eventos y devuelve un array de categorias unicas
+  let categorys = []
+  
+  for ( const evento of eventos){
+    if (categorys.indexOf(evento.category ) == -1){
+      categorys.push(evento.category);
+    }
+  }
+  return categorys
+}
+
+
+let categorias = getCategorys(events)
+console.log(categorias)
+
+let templateCheckbox = ""
+
+
+for (const categoria of categorias){
+  templateCheckbox += `<label class="form-check-label">
+  <input
+    class="form-check-input"
+    type="checkbox"
+    value="${categoria}"
+    id="${categoria}"
+  />
+  ${categoria}
+  </label>`
+}
+templateCheckbox += `<form class="form d-flex flex-nowrap ms-auto mw-100">
+                <input
+                  class="form-control"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button class="btn btn-fucsia btn-outline-dark py-2" type="submit">
+                  <img src="./assets/img/search.svg" alt="Search icon" />
+                </button>
+              </form>`
+console.log(templateCheckbox)
+htmlAdder("checkboxGroup", templateCheckbox)
