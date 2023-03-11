@@ -4,14 +4,15 @@ const categorys = getCategorys(events);
 
 cardInserter(events)
 categoryInserter(categorys)
-function searchEvent(eventos, value) {
-  // for (let evento of eventos) {
-  //   if (evento.category == value) {
-  //     eventos_filtrados.push(evento)
-  //   }
-  // }
-  let eventos_filtrados = eventos.filter((evento) => evento.name == value)
-  return eventos_filtrados
+
+function searchByName(eventos, value) {
+  let eventosFiltrados = events.filter((elemento) => (elemento.name.toLowerCase()).match(value.toLowerCase()))
+  return eventosFiltrados
+}
+
+function searchByCategory(eventos, value) {
+  let eventosFiltrados = events.filter((elemento) => (elemento.category.toLowerCase()).match(value.toLowerCase()))
+  return eventosFiltrados
 }
 
 function mensaje() {
@@ -26,9 +27,22 @@ let search = document.querySelector('#search')
 let searchBtn = document.querySelector('#searchBtn')
 
 searchBtn.addEventListener('click', (evento) => {
-  let value = search.value.toLowerCase();
-  let eventosFiltrados = events.filter((elemento) => (elemento.name.toLowerCase()).match(value))
-  cardInserter(eventosFiltrados)
+  let value = search.value;
+  cardInserter(searchByName(events, value))
   evento.preventDefault();
 }
 );
+
+
+let checboxGroup = document.querySelector('#checkboxGroup')
+
+// let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+checkboxGroup.addEventListener('change', () => {
+  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  let checked = (Array.from(checkboxes).filter((checkbox) => checkbox.checked)).map(element => element.value.toLowerCase())
+  let eventosFiltrados = []
+  checked.forEach(element => {
+    eventosFiltrados.concat(searchByCategory(events, element))
+  });
+  console.log(eventosFiltrados);
+})

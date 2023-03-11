@@ -63,18 +63,6 @@ function categoryInserter(categorys) {
       ${category}
       </label>`
   }
-  templateCheckbox += `<form class="form d-flex flex-nowrap ms-auto mw-100" >
-                    <input
-                      class="form-control"
-                      type="search"
-                      placeholder="Search"
-                      aria-label="Search"
-                      id="search"
-                    />
-                    <button class="btn btn-fucsia btn-outline-dark py-2" type="submit" id="searchBtn">
-                      <img src="./assets/img/search.svg" alt="Search icon" />
-                    </button>
-                  </form>`
   htmlAdder("checkboxGroup", templateCheckbox)
 }
 
