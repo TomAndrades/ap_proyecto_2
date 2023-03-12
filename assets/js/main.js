@@ -34,17 +34,22 @@ searchBtn.addEventListener('click', (evento) => {
 );
 
 
-let checboxGroup = document.querySelector('#checkboxGroup')
+let checkboxGroup = document.querySelector('#checkboxGroup')
 
 checkboxGroup.addEventListener('change', () => {
   let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  let checked = (Array.from(checkboxes).filter((checkbox) => checkbox.checked)).map(element => element.value.toLowerCase())
-  let eventosFiltrados = []
-  checked.forEach(element => {
-    eventosFiltrados.push(searchByCategory(events, element))
-  });
-  cardInserter(eventosFiltrados.flat())
-  console.log()
+  let checked = Array.from(checkboxes).filter((checkbox) => checkbox.checked)
+  let checkedValues = checked.map(element => element.value.toLowerCase())
 
+  if (checked.some((element) => element.checked)){
+    let eventosFiltrados = []
+    checkedValues.forEach(element => {
+      eventosFiltrados.push(searchByCategory(events, element))
+    });
+    cardInserter(eventosFiltrados.flat());
+  }else{
+    cardInserter(events);
+  }
+  
 
 });
