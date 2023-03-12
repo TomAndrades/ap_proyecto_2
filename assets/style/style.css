@@ -30,3 +30,7 @@
     width: 2rem;
     height: 2rem;
 }
+
+.min-vh-75 {
+    min-height: 75vh;
+}
