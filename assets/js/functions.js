@@ -86,7 +86,7 @@ function cardInserter(events) {
             class="card-footer d-flex justify-content-between align-items-center"
           >
             <p class="pt-3">Precio: $${event.price}</p>
-            <a href="./details.html" class="btn btn-fucsia">ver mas...</a>
+            <a href="./details.html?id=${event._id}" class="btn btn-fucsia">ver mas...</a>
           </div>
         </div>
       </div>`;
@@ -94,3 +94,49 @@ function cardInserter(events) {
 
   htmlAdder("eventsBody", templateCards)
 }
+
+function searchByName(eventos, value) {
+  let eventosFiltrados = eventos.filter((elemento) => (elemento.name.toLowerCase()).match(value.toLowerCase()))
+  return eventosFiltrados
+}
+
+function searchByCategory(eventos, value) {
+  let eventosFiltrados = eventos.filter((elemento) => (elemento.category.toLowerCase()).match(value.toLowerCase()))
+  return eventosFiltrados
+}
+
+
+
+
+searchBtn.addEventListener('click', (evento) => {
+  let value = search.value;
+  let searched = searchByName(showingElements, value);
+  if (searched.length == 0) {
+    alert(`We cannot anything for '${value}', please try another word or phrase`)
+  } else {
+    showingElements = searched;
+    cardInserter(showingElements)
+  }
+  evento.preventDefault();
+}
+);
+
+
+
+
+checkboxGroup.addEventListener('change', () => {
+  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  let checked = Array.from(checkboxes).filter((checkbox) => checkbox.checked)
+  let checkedValues = checked.map(element => element.value.toLowerCase())
+
+  if (checked.some((element) => element.checked)) {
+    let eventosFiltrados = []
+    checkedValues.forEach(element => {
+      eventosFiltrados.push(searchByCategory(showingElements, element));
+      showingElements = eventosFiltrados.flat();
+    });
+  } else {
+    showingElements = events;
+  }
+  cardInserter(showingElements);
+});
