@@ -110,13 +110,19 @@ function searchByCategory(eventos, value) {
 
 searchBtn.addEventListener('click', (evento) => {
   let value = search.value;
-  let searched = searchByName(showingElements, value);
-  if (searched.length == 0) {
-    alert(`We cannot anything for '${value}', please try another word or phrase`)
+  let searched = []
+  console.log(value)
+  if (value == 0) {
+    showingElements = events;
   } else {
-    showingElements = searched;
-    cardInserter(showingElements)
+    searched = searchByName(showingElements, value);
+    if (searched.length == 0) {
+      alert(`We cannot find anything for '${value}', please try another word or phrase`)
+    } else {
+      showingElements = searched;
+    }
   }
+  cardInserter(showingElements)
   evento.preventDefault();
 }
 );
@@ -132,7 +138,7 @@ checkboxGroup.addEventListener('change', () => {
   if (checked.some((element) => element.checked)) {
     let eventosFiltrados = []
     checkedValues.forEach(element => {
-      eventosFiltrados.push(searchByCategory(showingElements, element));
+      eventosFiltrados.push(searchByCategory(events, element));
       showingElements = eventosFiltrados.flat();
     });
   } else {
