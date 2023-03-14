@@ -105,44 +105,46 @@ function searchByCategory(eventos, value) {
   return eventosFiltrados
 }
 
-
-
-
-searchBtn.addEventListener('click', (evento) => {
+function makeSearch() {
   let value = search.value;
-  let searched = []
-  console.log(value)
-  if (value == 0) {
-    showingElements = events;
-  } else {
-    searched = searchByName(showingElements, value);
-    if (searched.length == 0) {
-      alert(`We cannot find anything for '${value}', please try another word or phrase`)
-    } else {
-      showingElements = searched;
-    }
-  }
-  cardInserter(showingElements)
-  evento.preventDefault();
-}
-);
-
-
-
-
-checkboxGroup.addEventListener('change', () => {
+  let eventosFiltrados = []
   let checkboxes = document.querySelectorAll('input[type="checkbox"]');
   let checked = Array.from(checkboxes).filter((checkbox) => checkbox.checked)
   let checkedValues = checked.map(element => element.value.toLowerCase())
+  let checkedSome = checked.some((element) => element.checked)
+  console.log(value)
+  showingElements = events;
 
-  if (checked.some((element) => element.checked)) {
-    let eventosFiltrados = []
+  if (checkedSome) {
     checkedValues.forEach(element => {
-      eventosFiltrados.push(searchByCategory(events, element));
-      showingElements = eventosFiltrados.flat();
+    eventosFiltrados.push(searchByCategory(showingElements, element));
+    eventosFiltrados = eventosFiltrados.flat();
+
     });
-  } else {
-    showingElements = events;
+    if (value != 0) {
+      showingElements = searchByName(eventosFiltrados,value)
+    } else {
+      showingElements = eventosFiltrados
+    }
+} else {
+  eventosFiltrados = events
+  if (value != 0) {
+    showingElements = searchByName(showingElements,value)
   }
-  cardInserter(showingElements);
+}
+if (showingElements.length == 0){
+  cardInserter(eventosFiltrados)
+  alert(`We cannot find anything, please try another word or category`)
+} else {
+  cardInserter(showingElements)
+}
+}
+
+searchBtn.addEventListener('click', (evento) => {
+  makeSearch()
+  evento.preventDefault();
+}
+);
+checkboxGroup.addEventListener('change', () => {
+  makeSearch()
 });
