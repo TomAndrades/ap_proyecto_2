@@ -1,35 +1,41 @@
 
 
-function getConditionalEvents(data, time = 0) {
-  //Toma una lista de data y retorna los eventos de un conjunto de datos,   
-  let events = []
-  switch (time) {
-    case -1:
-      //before currentDate events
-      for (let i = 0; i < data.events.length; i++) {
-        if (data.currentDate > data.events[i].date)
-          events.push(data.events[i])
-      }
-      break;
-    case 0:
-      //all events
-      for (let i = 0; i < data.events.length; i++) {
-        events.push(data.events[i]);
-      }
-      break;
-    case 1:
-      //after currentDate events
-      for (let i = 0; i < data.events.length; i++) {
-        if (data.currentDate < data.events[i].date)
-          events.push(data.events[i])
-      }
-      break;
-    default:
-      console.error('Debes agregar el segundo parametro correctamente');
-      break;
+async function getConditionalEvents(time = 0) {
+  //Toma una lista de data desde una api y retorna los eventos de un conjunto de datos,
+  try{
+    const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')    
+    const data = await respuesta.json()
+    console.log(data.events)
+    let eventosFiltrados = Array.from(data.events).filter((event) => event.date > data.currentDate)
+    // switch (time) {
+    //   case -1:
+    //     //before currentDate events
+    //     for (let i = 0; i < data.events.length; i++) {
+    //       if (data.currentDate > data.events[i].date)
+    //         eventosFiltrados.push(data.events[i])
+    //     }
+    //     break;
+    //   case 0:
+    //     //all events
+    //     for (let i = 0; i < data.events.length; i++) {
+    //       eventosFiltrados.push(data.events[i]);
+    //     }
+    //     break;
+    //   case 1:
+    //     //after currentDate events
+    //     for (let i = 0; i < data.events.length; i++) {
+    //       if (data.currentDate < data.events[i].date)
+    //       eventosFiltrados.push(data.events[i])
+    //     }
+    //     break;
+    // }
+  
+    return eventosFiltrados
   }
-
-  return events
+  catch(error){
+    console.log(error)
+    alert('An error has ocurred obtaining the cards')
+  }
 }
 
 function htmlAdder(elementId, elementToInsert) {
@@ -42,7 +48,7 @@ function getCategorys(events) {
   // Toma un array de eventos y devuelve un array de categorias unicas
   let categorys = []
 
-  for (const event of events) {
+  for (let event of events) {
     if (categorys.indexOf(event.category) == -1) {
       categorys.push(event.category);
     }
@@ -68,7 +74,9 @@ function categoryInserter(categorys) {
 
 function cardInserter(events) {
   let templateCards = ""
-  for (const event of events) {
+  
+  events.forEach(event => {
+    
     templateCards += `<div class="col">
         <div class="card text-bg-dark">
           <img
@@ -90,7 +98,8 @@ function cardInserter(events) {
           </div>
         </div>
       </div>`;
-  }
+  });
+  
 
   htmlAdder("eventsBody", templateCards)
 }
