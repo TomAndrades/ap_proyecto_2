@@ -5,8 +5,21 @@ async function getConditionalEvents(time = 0) {
   try{
     const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')    
     const data = await respuesta.json()
-    console.log(data.events)
-    let eventosFiltrados = Array.from(data.events).filter((event) => event.date > data.currentDate)
+    const eventos = await data.events
+    const currentDate = await data.currentDate
+    console.log(eventos)
+    console.log(currentDate)
+    switch (time){
+      case -1:
+        eventosFiltrados = Array.from(eventos).filter((event) => event.date < currentDate)
+      break;
+      case 0:
+        eventosFiltrados = eventos;
+      break;
+      case 1:
+        eventosFiltrados = Array.from(eventos).filter((event) => event.date > currentDate)
+      break;
+    }
     // switch (time) {
     //   case -1:
     //     //before currentDate events
@@ -29,12 +42,13 @@ async function getConditionalEvents(time = 0) {
     //     }
     //     break;
     // }
-  
+    categoryInserter(getCategorys(eventosFiltrados))
+    cardInserter(eventosFiltrados)
     return eventosFiltrados
   }
   catch(error){
     console.log(error)
-    alert('An error has ocurred obtaining the cards')
+    // alert('An error has ocurred obtaining the cards')
   }
 }
 
@@ -72,7 +86,7 @@ function categoryInserter(categorys) {
   htmlAdder("checkboxGroup", templateCheckbox)
 }
 
-function cardInserter(events) {
+async function cardInserter(events) {
   let templateCards = ""
   
   events.forEach(event => {
