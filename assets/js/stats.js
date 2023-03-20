@@ -1,21 +1,31 @@
-async function getEvents(){
+async function crearTABLA(){
     try{
       const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')    
       const data = await respuesta.json()
       const eventos = await data.events
-      return eventos
+      let titulo = "Event Stadistics"
+      let subtitulos = ["Event with the highest percentage of attendance",
+          "Event with the lowest percentage of attendance",
+          "Event with larger capacity"]
+          console.log(eventos)
+      let values = highestLowerAttCapacity(eventos)
+      console.log(values);
+      
+      
     }
     catch(error){
       console.log(error)
     }
   }
-  function htmlAdder(elementId, elementToInsert) {
-    //Toma un padre del documento por el ID y un string a insertar y lo inserta en el html
-    let element = document.getElementById(elementId);
-    element.innerHTML = elementToInsert;
-  }
+
+
+function htmlAdder(elementId, elementToInsert) {
+//Toma un padre del documento por el ID y un string a insertar y lo inserta en el html
+  let element = document.getElementById(elementId);
+  element.innerHTML = elementToInsert;
+}
   
-async function crearTabla(titulo, subtitulos, data) {
+function crearTabla(titulo, subtitulos, data) {
     let template = `<table class="border bg-light">
                     <tr class="border text-bg-dark">
                         <th class="border" colspan="3">
@@ -27,24 +37,36 @@ async function crearTabla(titulo, subtitulos, data) {
         template += crearLinea(element)
     });
     template += `</table>`
+    
     htmlAdder("tabla", template)
 }
+function crearTabla1(titulo, subtitulos) {
+    let template = `<table class="border bg-light">
+                    <tr class="border text-bg-dark">
+                        <th class="border" colspan="3">
+                            <h3>${titulo}</h3>
+                        </th>
+                    </tr>`
+    template += crearLinea(subtitulos) 
+    return template;
+}
 
-function crearLinea(data){
-let template = `</tr>
+function crearLinea(subtitulos){
+let template = `
 <tr class="border">`
-data.forEach(element => {
+subtitulos.forEach(subtitulo => {
     template += `<td class="border">
-    ${element}
+    ${subtitulo}
   </td>`
 })
 template += `</tr>`
 return template
 }
-const eventos = getEvents();
 
-async function highestLowerAttCapacity(eventos) {
-    let highestAttendance = {
+function highestLowerAttCapacity(eventos) {
+  
+  
+  let highestAttendance = {
         "name": "",
         "percent" : 0
     }
@@ -56,22 +78,20 @@ async function highestLowerAttCapacity(eventos) {
         "name" : "",
         "capacity": 0
     };
-    await eventos.forEach(evento => {
+    eventos.forEach(evento => {
         let percentAttendance = 0
-        
-        if (evento.hasOwn("estimate")) {
-             percentAttendance = evento.capacity/evento.estimate
-        }else{
-             percentAttendance = evento.capacity/evento.assistance
+          
+        if (Object.hasOwn(evento, "acssitance")) {
+             percentAttendance = evento.assistance/evento.capacity*100
+             if (highestAttendance.percent < percentAttendance){
+                 highestAttendance.name = evento.name;
+                 highestAttendance.percent = percentAttendance
+             } else if (lowestAttendance.percent > percentAttendance) {
+                 lowestAttendance.name = evento.name;
+                 lowestAttendance.percent = percentAttendance
+             }
         }
-        if (highestAttendance.percent < percentAttendance){
-            highestAttendance.name = evento.name;
-            highestAttendance.percent = percentAttendance
-        } else if (lowestAttendance.percent > percentAttendance) {
-            lowestAttendance.name = evento.name;
-            lowestAttendance.percent = percentAttendance
-        }
-        if (evento.capacity > capacity){
+        if (evento.capacity > highestCapacity.capacity){
             highestCapacity.name = evento.name
             highestCapacity.capacity = evento.capacity
         }
@@ -80,8 +100,8 @@ async function highestLowerAttCapacity(eventos) {
         `${lowestAttendance.name} ${lowestAttendance.percent}`,
         `${highestCapacity.name} ${highestCapacity.capacity}`];
 }
-subtitulosStadistics = [["Event with the highest percentage of attendance","Event with the lowest percentage of attendance","Event with larger capacity"]]
-crearTabla("Event Stadistics", subtitulosStadistics, highestLowerAttCapacity(eventos))
+
+crearTABLA()
 /*
 <table class="border bg-light">
 <tr class="border text-bg-dark">
