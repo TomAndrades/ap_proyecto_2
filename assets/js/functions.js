@@ -1,5 +1,3 @@
-
-
 async function getConditionalEvents(time = 0) {
   //Toma una lista de data desde una api y retorna los eventos de un conjunto de datos,
   try{
