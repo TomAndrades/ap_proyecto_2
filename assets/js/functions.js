@@ -7,8 +7,8 @@ async function getConditionalEvents(time = 0) {
     const data = await respuesta.json()
     const eventos = await data.events
     const currentDate = await data.currentDate
-    console.log(eventos)
-    console.log(currentDate)
+    // console.log(eventos)
+    // console.log(currentDate)
     switch (time){
       case -1:
         eventosFiltrados = Array.from(eventos).filter((event) => event.date < currentDate)
@@ -86,7 +86,7 @@ function categoryInserter(categorys) {
   htmlAdder("checkboxGroup", templateCheckbox)
 }
 
-async function cardInserter(events) {
+function cardInserter(events) {
   let templateCards = ""
   
   events.forEach(event => {
@@ -128,15 +128,15 @@ function searchByCategory(eventos, value) {
   return eventosFiltrados
 }
 
-function makeSearch() {
+async function makeSearch() {
   let value = search.value;
   let eventosFiltrados = []
   let checkboxes = document.querySelectorAll('input[type="checkbox"]');
   let checked = Array.from(checkboxes).filter((checkbox) => checkbox.checked)
   let checkedValues = checked.map(element => element.value.toLowerCase())
   let checkedSome = checked.some((element) => element.checked)
-  console.log(value)
-  showingElements = events;
+  // console.log(value)
+  showingElements = await events;
 
   if (checkedSome) {
     checkedValues.forEach(element => {
