@@ -7,11 +7,10 @@ async function crearTABLA(){
       let subtitulos = ["Event with the highest percentage of attendance",
           "Event with the lowest percentage of attendance",
           "Event with larger capacity"]
-          console.log(eventos)
-      let values = highestLowerAttCapacity(eventos)
-      console.log(values);
-      
-      
+      let template = crearTabla1(titulo,subtitulos)
+      template += crearLinea(highestLowerAttCapacity(eventos)) + "</table>"
+      console.log(template)
+      htmlAdder("tabla",template)
     }
     catch(error){
       console.log(error)
@@ -52,8 +51,7 @@ function crearTabla1(titulo, subtitulos) {
 }
 
 function crearLinea(subtitulos){
-let template = `
-<tr class="border">`
+let template = `<tr class="border">`
 subtitulos.forEach(subtitulo => {
     template += `<td class="border">
     ${subtitulo}
@@ -72,7 +70,7 @@ function highestLowerAttCapacity(eventos) {
     }
     let lowestAttendance = {
         "name": "",
-        "percent" : 0
+        "percent" : 100
     }
     let highestCapacity = {
         "name" : "",
@@ -80,13 +78,16 @@ function highestLowerAttCapacity(eventos) {
     };
     eventos.forEach(evento => {
         let percentAttendance = 0
-          
-        if (Object.hasOwn(evento, "acssitance")) {
+        console.log(evento)
+        console.log(Object.hasOwn(evento, 'assistance'))
+        if (Object.hasOwn(evento, 'assistance')) {
              percentAttendance = evento.assistance/evento.capacity*100
+             console.log(percentAttendance)
              if (highestAttendance.percent < percentAttendance){
                  highestAttendance.name = evento.name;
                  highestAttendance.percent = percentAttendance
-             } else if (lowestAttendance.percent > percentAttendance) {
+             }
+             if (lowestAttendance.percent > percentAttendance) {
                  lowestAttendance.name = evento.name;
                  lowestAttendance.percent = percentAttendance
              }
@@ -96,8 +97,8 @@ function highestLowerAttCapacity(eventos) {
             highestCapacity.capacity = evento.capacity
         }
     });
-        return [`${highestAttendance.name} ${highestAttendance.percent}`,
-        `${lowestAttendance.name} ${lowestAttendance.percent}`,
+        return [`${highestAttendance.name} ${highestAttendance.percent.toPrecision(3)}%`,
+        `${lowestAttendance.name} ${lowestAttendance.percent.toPrecision(3)}%`,
         `${highestCapacity.name} ${highestCapacity.capacity}`];
 }
 
