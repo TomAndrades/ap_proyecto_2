@@ -128,17 +128,20 @@ function htmlAdder(elementId, elementToInsert) {
 }
 
 function createHeader(eventStadistics) {
-  let template = `<table class="border bg-light text-center">
-                    <tr class="border text-bg-dark">
+  let template = `<table class="border bg-light">
+                    <thead>
+                    <tr class="border text-bg-dark text-center">
                         <th class="border" colspan="3">
                             <h3>${eventStadistics.titulo}</h3>
                         </th>
-                    </tr>`;
-  template += crearLinea(eventStadistics.subtitulo);
+                    </tr>
+                    </thead>
+                    <tbody>`;
+  template += crearLinea(eventStadistics.subtitulo, true);
   return template;
 }
 function createStadisticsTable(eventStadistics) {
-  let template = createHeader(eventStadistics) + crearLinea(eventStadistics.data) + "</table>"
+  let template = createHeader(eventStadistics) + crearLinea(eventStadistics.data) + "</tbody></table>"
   htmlAdder("tabla", template);
 }
 
@@ -151,12 +154,18 @@ let template = createHeader(categoryStats)
     htmlAdder("tabla",template)
   }
 
-function crearLinea(data) {
+function crearLinea(data, bold = false) {
   let template = `<tr class="border">`;
   data.forEach((element) => {
+    if(bold){
+      template += `<td class="border fw-bold">
+    ${element}
+  </td>`;
+    } else {
     template += `<td class="border">
     ${element}
   </td>`;
+    }
   });
   template += `</tr>`;
   return template;
