@@ -21,6 +21,10 @@
     background-color: #aa326a !important;
 }
 
+.fucsia {
+    color:#D90368 !important;
+}
+
 .form-control:focus {
     border: 3px solid #D90368;
     box-shadow: none;
