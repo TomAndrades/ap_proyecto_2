@@ -5,67 +5,83 @@ async function crearTABLA() {
     );
     const data = await respuesta.json();
     const eventos = await data.events;
-    setPercent(await eventos)
-    console.log(eventos)
-    let pastEvents = Array.from(eventos).filter((evento) => Object.hasOwn(evento, "assistance"))
-    let upcomingEvents = Array.from(eventos).filter((evento) => Object.hasOwn(evento, "estimate"))
-    let highestAttendance = pastEvents.sort((a,b) =>  {
-    if(a.attendancePercent < b.attendancePercent){
-      return 1
-    }
-    if(a.attendancePercent > b.attendancePercent) {
-      return -1
-    } else {
-      return 0
-    }
-    })
-    let lowestAttendance = highestAttendance[highestAttendance.length-1]
-    let mostCapacity = pastEvents.reduce((acc,act) => {
-      if(act.capacity > acc.capacity){
-        return act
-      }else{
-        return acc
+    setPercent(await eventos);
+
+    console.log(eventos);
+
+    let pastEvents = Array.from(eventos).filter((evento) =>
+      Object.hasOwn(evento, "assistance")
+    );
+    
+    let upcomingEvents = Array.from(eventos).filter((evento) =>
+      Object.hasOwn(evento, "estimate")
+    );
+
+    let sortHighestAttendance = pastEvents.sort((a, b) => {
+      if (a.percent < b.percent) {
+        return 1;
       }
-      
-    }, {capacity: 0})
-    console.log(highestAttendance)
+      if (a.percent > b.percent) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+
+    let highestAttendance = sortHighestAttendance[0];
+    let lowestAttendance =
+      sortHighestAttendance[sortHighestAttendance.length - 1];
+    let mostCapacity = pastEvents.reduce(
+      (acc, act) => {
+        if (act.capacity > acc.capacity) {
+          return act;
+        } else {
+          return acc;
+        }
+      },
+      { capacity: 0 }
+    );
+
+    console.log(highestAttendance);
     console.log(lowestAttendance);
     console.log(mostCapacity);
+
+    let upcomingEventStats = getCategoryStats(upcomingEvents, false)
+    let pastEventStats = getCategoryStats(pastEvents, true)
+    console.log(upcomingEventStats)
+    console.log(pastEventStats)
+    
     //Tabla 1
-    let eventStadisticTitle = {
+    let eventStadistics = {
       titulo: "Event Stadistics",
       subtitulo: [
         "Event with the highest percentage of attendance",
         "Event with the lowest percentage of attendance",
         "Event with larger capacity",
       ],
-      // data: highestLowerAttCapacity(eventos),
-    };
-    
-    // console.log(upcomingEvents);
-    
-
-    let UpcomingStadisticTitle = {
-      titulo: "Upcoming events stadistics by Category",
-      subtitulo: [
-        "Category",
-        "Revenues",
-        "% of attendance",
+      data: [
+        `${highestAttendance.name} ${highestAttendance.percent.toFixed(2)}%`,
+        `${lowestAttendance.name} ${lowestAttendance.percent.toFixed(2)}%`,
+        `${mostCapacity.name} ${mostCapacity.capacity}`,
       ],
-      // data: highestLowerAttCapacity(eventos),
+    };
+
+    let upcomingStadisticTitle = {
+      titulo: "Upcoming events stadistics by Category",
+      subtitulo: ["Category", "Revenues", "% of attendance"],
+      data: highestLowerAttCapacity(eventos),
     };
     let PastStadisticTitle = {
       titulo: "Past events stadistics by Category",
-      subtitulo: [
-        "Category",
-        "Revenues",
-        "% of attendance",
-      ],
+      subtitulo: ["Category", "Revenues", "% of attendance"],
       // data: highestLowerAttCapacity(eventos),
     };
-    // let template = crearTabla1(titulo, subtitulos);
-    // template += crearLinea(highestLowerAttCapacity(eventos)) + "</table>";
-    // htmlAdder("tabla", template);
+    let template = crearTabla1(
+      eventStadistics.titulo,
+      eventStadistics.subtitulo
+    );
+    template += crearLinea(eventStadistics.data) + "</table>";
+    htmlAdder("tabla", template);
     //Tabla 2
     // let titulo = "Event Stadistics";
     // let subtitulos = [
@@ -80,13 +96,58 @@ async function crearTABLA() {
   }
 }
 
+function getCategoryStats(events,past) {
+  let eventStats = []
+  getCategorys(events).forEach((category) => {
+    let acumulador = 0;
+    let revenue = events.reduce((acc, act) => {
+      if (category == act.category) {
+        if(past){
+          return acc + act.price * act.assistance;
+        }
+        return acc + act.price * act.estimate;
+      } else {
+        return acc;
+      }
+    }, 0);
+    let percent =
+      events.reduce((acc, act) => {
+        if (category == act.category) {
+          acumulador++;
+          return acc + act.percent;
+        } else {
+          return acc;
+        }
+      }, 0) / acumulador;
+    eventStats.push({
+      name: category,
+      revenue: revenue,
+      percent: percent,
+    });
+  });
+  return eventStats
+}
+
+function getCategorys(events) {
+  // Toma un array de eventos y devuelve un array de categorias unicas
+  let categorys = [];
+
+  for (let event of events) {
+    if (categorys.indexOf(event.category) == -1) {
+      categorys.push(event.category);
+    }
+  }
+  return categorys;
+}
+
 function htmlAdder(elementId, elementToInsert) {
   //Toma un padre del documento por el ID y un string a insertar y lo inserta en el html
   let element = document.getElementById(elementId);
   element.innerHTML = elementToInsert;
 }
+function 
 
-function crearTabla(titulo, subtitulos, data) {
+function crearStadisticsTable(eventStadistics) {
   let template = `<table class="border bg-light">
                     <tr class="border text-bg-dark">
                         <th class="border" colspan="3">
@@ -102,7 +163,7 @@ function crearTabla(titulo, subtitulos, data) {
   htmlAdder("tabla", template);
 }
 function crearTabla1(titulo, subtitulos) {
-  let template = `<table class="border bg-light">
+  let template = `<table class="border bg-light text-center">
                     <tr class="border text-bg-dark">
                         <th class="border" colspan="3">
                             <h3>${titulo}</h3>
@@ -112,27 +173,29 @@ function crearTabla1(titulo, subtitulos) {
   return template;
 }
 
-function crearLinea(subtitulos) {
+function crearLinea(data) {
   let template = `<tr class="border">`;
-  subtitulos.forEach((subtitulo) => {
+  data.forEach((element) => {
     template += `<td class="border">
-    ${subtitulo}
+    ${element}
   </td>`;
   });
   template += `</tr>`;
   return template;
 }
 
-function setPercent(eventos){
+function setPercent(eventos) {
   eventos.forEach((evento) => {
-    let percentAttendance = 0;
+    let percent = 0;
     if (Object.hasOwn(evento, "assistance")) {
-      percentAttendance = (evento.assistance / evento.capacity) * 100;
-      Object.defineProperty(evento, "attendancePercent", {value:percentAttendance.toFixed(2)})
-    }else{
-      percentEstimate = (evento.estimate / evento.capacity) * 100;
-      Object.defineProperty(evento, "percentEstimate", {value:percentEstimate.toFixed(2)})
-    }})
+      percent = (evento.assistance / evento.capacity) * 100;
+    } else {
+      percent = (evento.estimate / evento.capacity) * 100;
+    }
+    Object.defineProperty(evento, "percent", {
+      value: percent,
+    });
+  });
 }
 // function highestCapacity(eventos){
 //   let highestCapacity = {
@@ -163,7 +226,7 @@ function setPercent(eventos){
 //         lowestAttendance.name = evento.name;
 //         lowestAttendance.percent = percentAttendance;
 //       }
-    
+
 //   });
 //   return [
 //     `${highestAttendance.name} ${highestAttendance.percent.toFixed(3)}%`,
