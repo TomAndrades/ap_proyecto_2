@@ -40,8 +40,8 @@ async function getConditionalEvents(time = 0) {
     //     }
     //     break;
     // }
-    categoryInserter(getCategorys(eventosFiltrados))
-    cardInserter(eventosFiltrados)
+    // categoryInserter(getCategorys(eventosFiltrados))
+    // cardInserter(eventosFiltrados)
     return eventosFiltrados
   }
   catch(error){
