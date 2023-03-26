@@ -148,7 +148,7 @@ async function makeSearch() {
       showingElements = eventosFiltrados
     }
 } else {
-  eventosFiltrados = events
+  eventosFiltrados = await events
   if (value != 0) {
     showingElements = searchByName(showingElements,value)
   }
