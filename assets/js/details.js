@@ -1,8 +1,28 @@
-const queryString = location.search
+
+async function getConditionalEvents(time = 0) {
+    //Toma una lista de data desde una api y retorna los eventos de un conjunto de datos,
+    try{
+      const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')    
+      const data = await respuesta.json()
+      const eventos = await data.events
+      const currentDate = await data.currentDate
+      // console.log(eventos)
+      // console.log(currentDate)
+      switch (time){
+        case -1:
+          eventosFiltrados = Array.from(eventos).filter((event) => event.date < currentDate)
+        break;
+        case 0:
+          eventosFiltrados = eventos;
+        break;
+        case 1:
+          eventosFiltrados = Array.from(eventos).filter((event) => event.date > currentDate)
+        break;
+      }
+      const queryString = location.search
 const params = new URLSearchParams(queryString)
 const id = params.get("id")
-const eventos = data.events;
-const evento = eventos.find((evento) => (evento._id == id))
+const evento = eventosFiltrados.find((evento) => (evento._id == id))
 const main = document.querySelector("main")
 main.innerHTML = `
 <div class="d-flex flex-column flex-xl-row w-75 text-bg-dark py-3 px-3">
@@ -23,3 +43,12 @@ main.innerHTML = `
           </div>
       </div>
       `
+
+    }
+    catch(error){
+      console.log(error)
+      // alert('An error has ocurred obtaining the cards')
+    }
+  }
+
+  getConditionalEvents();
